@@ -92,8 +92,8 @@ export default function CountdownDisplay({ birthday }: { birthday: Birthday }) {
         ) : (
           <>
             <h1 className="text-2xl md:text-3xl mb-8 text-gray-800 dark:text-white">
-              Countdown to {birthday.recipient_name}'s {birthday.target_age}th
-              Birthday
+              Countdown to {birthday.recipient_name}&apos;s{" "}
+              {birthday.target_age}th Birthday
             </h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
               <div className="bg-white/50 dark:bg-gray-800/50 p-6 rounded-lg shadow-lg">

@@ -181,7 +181,7 @@ export default function BirthdayForm() {
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">
-                Birthday Person's Name
+                Birthday Person&apos;s Name
               </label>
               <input
                 ref={inputRef}
