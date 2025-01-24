@@ -6,12 +6,18 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_KEY!
 );
 
-export async function POST(request: NextRequest, { params }: any) {
+interface RouteContext {
+  params: {
+    id: string;
+  };
+}
+
+export async function POST(request: NextRequest, context: RouteContext) {
   try {
     const { error } = await supabase
       .from("birthdays")
       .update({ is_expired: true })
-      .eq("id", params.id);
+      .eq("id", context.params.id);
 
     if (error) throw error;
 
