@@ -6,18 +6,13 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_KEY!
 );
 
-interface RouteContext {
-  params: {
-    id: string;
-  };
-}
-
-export async function POST(request: NextRequest, context: RouteContext) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function POST(request: NextRequest, { params }: any) {
   try {
     const { error } = await supabase
       .from("birthdays")
       .update({ is_expired: true })
-      .eq("id", context.params.id);
+      .eq("id", params.id);
 
     if (error) throw error;
 
