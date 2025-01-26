@@ -28,7 +28,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const { data, error } = await supabase
+    const { data, error: dbError } = await supabase
       .from("birthdays")
       .insert([
         {
@@ -41,8 +41,8 @@ export async function POST(request: Request) {
       .select()
       .single();
 
-    if (error) {
-      // console.error("Database insert error:", error);
+    if (dbError) {
+      // console.error("Database insert error:", dbError);
       return NextResponse.json(
         { error: "Database operation failed" },
         { status: 500 }
@@ -51,7 +51,7 @@ export async function POST(request: Request) {
 
     // console.log("Successfully created birthday entry:", data);
     return NextResponse.json({ id: data.id });
-  } catch (error) {
+  } catch (_) {
     // console.error("Error in POST handler:", error);
     return NextResponse.json(
       { error: "Internal Server Error" },

@@ -141,11 +141,10 @@ export default function BirthdayForm() {
       if (data.id) {
         router.push(`/countdown/${data.id}`);
       }
-    } catch (error) {
-      // console.error("Error:", error);
+    } catch (_) {
       setErrors((prev) => ({
         ...prev,
-        general: "Form gönderilirken bir hata oluştu",
+        general: "An error occurred while submitting the form",
       }));
     } finally {
       setLoading(false);
