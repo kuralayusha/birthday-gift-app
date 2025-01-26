@@ -51,7 +51,7 @@ export async function POST(request: Request) {
 
     // console.log("Successfully created birthday entry:", data);
     return NextResponse.json({ id: data.id });
-  } catch (_) {
+  } catch {
     // console.error("Error in POST handler:", error);
     return NextResponse.json(
       { error: "Internal Server Error" },

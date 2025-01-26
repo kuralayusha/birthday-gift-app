@@ -141,7 +141,7 @@ export default function BirthdayForm() {
       if (data.id) {
         router.push(`/countdown/${data.id}`);
       }
-    } catch (_) {
+    } catch {
       setErrors((prev) => ({
         ...prev,
         general: "An error occurred while submitting the form",
