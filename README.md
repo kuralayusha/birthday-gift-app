@@ -7,7 +7,6 @@ A modern web application that creates personalized birthday countdown timers. Bu
 - Multi-step form for creating birthday countdowns
 - Real-time countdown display
 - Responsive design for all devices
-- Dark mode support
 - Automatic celebration message when countdown reaches zero
 
 ## Tech Stack
@@ -23,7 +22,7 @@ A modern web application that creates personalized birthday countdown timers. Bu
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/kuralayusha/bd-gift.git
+git clone https://github.com/kuralayusha/birthday-gift-app.git
 cd birthday-gift-app
 ```
 
