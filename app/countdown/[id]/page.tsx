@@ -8,7 +8,7 @@ const supabase = createClient(
 );
 
 async function getBirthday(id: string) {
-  console.log("Fetching birthday with ID:", id);
+  // console.log("Fetching birthday with ID:", id);
 
   const { data: birthday, error } = await supabase
     .from("birthdays")
@@ -24,7 +24,7 @@ async function getBirthday(id: string) {
     return null;
   }
 
-  console.log("Birthday data:", birthday);
+  // console.log("Birthday data:", birthday);
   return birthday;
 }
 
@@ -51,15 +51,15 @@ export default async function CountdownPage({
     const birthday = await getBirthday(id);
 
     if (!birthday) {
-      console.error("Birthday not found for ID:", id);
+      // console.error("Birthday not found for ID:", id);
       notFound();
     }
 
-    console.log("Rendering countdown for:", {
-      recipient: birthday.recipient_name,
-      date: birthday.birth_date,
-      hasImage: !!birthday.image_url,
-    });
+    // console.log("Rendering countdown for:", {
+    //   recipient: birthday.recipient_name,
+    //   date: birthday.birth_date,
+    //   hasImage: !!birthday.image_url,
+    // });
 
     const birthdayData = {
       recipient_name: birthday.recipient_name,
@@ -93,7 +93,7 @@ export default async function CountdownPage({
       </div>
     );
   } catch (error) {
-    console.error("Error in CountdownPage:", error);
+    // console.error("Error in CountdownPage:", error);
     throw error; // Bu hata error.tsx sayfasına yönlendirecek
   }
 }

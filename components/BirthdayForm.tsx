@@ -47,8 +47,22 @@ export default function BirthdayForm() {
         if (!value) {
           return "Birth date is required";
         }
+
+        // Check if the date is in valid format
+        const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+        if (!dateRegex.test(value)) {
+          return "Please enter a valid date in YYYY-MM-DD format";
+        }
+
         const selectedDate = new Date(value);
         const today = new Date();
+
+        // Check if it's a valid date object
+        if (isNaN(selectedDate.getTime())) {
+          return "Please enter a valid date";
+        }
+
+        // Reset time part for accurate date comparison
         today.setHours(0, 0, 0, 0);
         selectedDate.setHours(0, 0, 0, 0);
 
@@ -128,7 +142,7 @@ export default function BirthdayForm() {
         router.push(`/countdown/${data.id}`);
       }
     } catch (error) {
-      console.error("Error:", error);
+      // console.error("Error:", error);
       setErrors((prev) => ({
         ...prev,
         general: "Form gönderilirken bir hata oluştu",
@@ -291,11 +305,17 @@ export default function BirthdayForm() {
                 value={formData.birthDate}
                 onChange={handleInputChange}
                 onKeyDown={handleKeyDown}
+                pattern="\d{4}-\d{2}-\d{2}"
                 className="mt-1 block w-full rounded-md border-2 border-gray-300 dark:border-gray-600 
                 px-4 py-2 bg-white dark:bg-gray-800 
                 focus:outline-none focus:border-purple-500 dark:focus:border-purple-400 
-                transition-colors"
+                transition-colors [&::-webkit-calendar-picker-indicator]:dark:invert
+                [&::-webkit-datetime-edit]:p-0
+                [&::-webkit-datetime-edit-fields-wrapper]:p-0"
               />
+              <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                Select the future date when you want to celebrate
+              </p>
               {errors.birthDate && (
                 <p className="mt-1 text-sm text-red-500">{errors.birthDate}</p>
               )}

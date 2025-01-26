@@ -9,12 +9,12 @@ const supabase = createClient(
 export async function POST(request: Request) {
   try {
     const formData = await request.formData();
-    console.log("Received form data:", {
-      senderName: formData.get("senderName"),
-      recipientName: formData.get("recipientName"),
-      birthDate: formData.get("birthDate"),
-      targetAge: formData.get("targetAge"),
-    });
+    // console.log("Received form data:", {
+    //   senderName: formData.get("senderName"),
+    //   recipientName: formData.get("recipientName"),
+    //   birthDate: formData.get("birthDate"),
+    //   targetAge: formData.get("targetAge"),
+    // });
 
     const senderName = formData.get("senderName");
     const recipientName = formData.get("recipientName");
@@ -42,17 +42,17 @@ export async function POST(request: Request) {
       .single();
 
     if (error) {
-      console.error("Database insert error:", error);
+      // console.error("Database insert error:", error);
       return NextResponse.json(
         { error: "Database operation failed" },
         { status: 500 }
       );
     }
 
-    console.log("Successfully created birthday entry:", data);
+    // console.log("Successfully created birthday entry:", data);
     return NextResponse.json({ id: data.id });
   } catch (error) {
-    console.error("Error in POST handler:", error);
+    // console.error("Error in POST handler:", error);
     return NextResponse.json(
       { error: "Internal Server Error" },
       { status: 500 }
