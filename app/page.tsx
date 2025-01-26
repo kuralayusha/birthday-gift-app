@@ -1,5 +1,11 @@
 import BirthdayForm from "@/components/BirthdayForm";
 
+export const metadata = {
+  title: "🎂 Birthday Countdown | Create Special Moments for Your Loved Ones",
+  description:
+    "🎈 Create a special birthday countdown for your loved ones. Make them happy with surprise messages and warm wishes! 🎉",
+};
+
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-pink-100 to-purple-100 dark:from-gray-900 dark:to-gray-800">

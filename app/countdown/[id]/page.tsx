@@ -17,7 +17,10 @@ async function getBirthday(id: string) {
     .single();
 
   if (error) {
-    console.error("Supabase error:", error);
+    throw new Error("Failed to fetch birthday data");
+  }
+
+  if (!birthday) {
     return null;
   }
 
@@ -91,10 +94,6 @@ export default async function CountdownPage({
     );
   } catch (error) {
     console.error("Error in CountdownPage:", error);
-    return (
-      <div className="min-h-screen flex items-center justify-center text-red-500">
-        Bir hata oluştu. Lütfen tekrar deneyin.
-      </div>
-    );
+    throw error; // Bu hata error.tsx sayfasına yönlendirecek
   }
 }
