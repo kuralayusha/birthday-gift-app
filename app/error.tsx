@@ -5,7 +5,7 @@ import { useEffect } from "react";
 export const metadata = {
   title: "❌ An Error Occurred | Birthday Countdown",
   description:
-    "🔧 We're sorry, something went wrong. Please refresh the page or try again later.",
+    "🔧 We&apos;re sorry, something went wrong. Please refresh the page or try again later.",
 };
 
 export default function Error({
@@ -29,7 +29,7 @@ export default function Error({
           Something went wrong
         </h2>
         <p className="text-gray-600 dark:text-gray-300 mb-8">
-          We're sorry, but something went wrong. Please try again.
+          We&apos;re sorry, but something went wrong. Please try again.
         </p>
         <button
           onClick={reset}

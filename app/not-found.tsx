@@ -3,7 +3,7 @@ import Link from "next/link";
 export const metadata = {
   title: "😕 Page Not Found | Birthday Countdown",
   description:
-    "🔍 The page you're looking for cannot be found. Return to the homepage to create a new birthday countdown.",
+    "🔍 The page you&apos;re looking for cannot be found. Return to the homepage to create a new birthday countdown.",
 };
 
 export default function NotFound() {
@@ -17,7 +17,7 @@ export default function NotFound() {
           Page Not Found
         </h2>
         <p className="text-gray-600 dark:text-gray-300 mb-8">
-          The page you're looking for doesn't exist or has been moved.
+          The page you&apos;re looking for doesn&apos;t exist or has been moved.
         </p>
         <Link
           href="/"
