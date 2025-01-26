@@ -37,7 +37,7 @@ npm install
 
 ```js
 NEXT_PUBLIC_SUPABASE_URL = your_supabase_project_url;
-SUPABASE_SERVICE_KEY = your_supabase_service_key;
+NEXT_PUBLIC_SUPABASE_ANON_KEY = your_NEXT_PUBLIC_SUPABASE_ANON_KEY;
 ```
 
 4. Set up the database schema:

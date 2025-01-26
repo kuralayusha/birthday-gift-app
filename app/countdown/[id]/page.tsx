@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_KEY!
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 );
 
 async function getBirthday(id: string) {
@@ -25,8 +25,13 @@ async function getBirthday(id: string) {
   return birthday;
 }
 
-export async function generateMetadata({ params }: { params: { id: string } }) {
-  const birthday = await getBirthday(params.id);
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  const birthday = await getBirthday(id);
 
   return {
     title: birthday ? `Countdown for ${birthday.recipient_name}` : "Not Found",
@@ -36,13 +41,14 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
 export default async function CountdownPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
   try {
-    const birthday = await getBirthday(params.id);
+    const { id } = await params;
+    const birthday = await getBirthday(id);
 
     if (!birthday) {
-      console.error("Birthday not found for ID:", params.id);
+      console.error("Birthday not found for ID:", id);
       notFound();
     }
 

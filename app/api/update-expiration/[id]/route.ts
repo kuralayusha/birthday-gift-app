@@ -3,16 +3,21 @@ import { NextRequest, NextResponse } from "next/server";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_KEY!
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 );
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export async function POST(request: NextRequest, { params }: any) {
+// { params: { month: string } }
+// { params } : { params: Promise<{ month: string }> }
+export async function POST(
+  request: NextRequest,
+  context: { params: Promise<{ id: string }> }
+) {
   try {
+    const { id } = await context.params;
     const { error } = await supabase
       .from("birthdays")
       .update({ is_expired: true })
-      .eq("id", params.id);
+      .eq("id", id);
 
     if (error) throw error;
 
