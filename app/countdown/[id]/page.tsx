@@ -86,7 +86,7 @@ export default async function CountdownPage({
               rel="noopener noreferrer"
               className="hover:underline hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
             >
-              Powered by Yusha
+              Powered by Kuralayusha
             </a>
           </div>
         </footer>
