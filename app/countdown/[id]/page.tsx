@@ -90,6 +90,11 @@ export default async function CountdownPage({
       </div>
     );
   } catch (error) {
-    // ... hata yönetimi
+    console.error("Error in CountdownPage:", error);
+    return (
+      <div className="min-h-screen flex items-center justify-center text-red-500">
+        Bir hata oluştu. Lütfen tekrar deneyin.
+      </div>
+    );
   }
 }

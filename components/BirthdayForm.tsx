@@ -17,6 +17,7 @@ export default function BirthdayForm() {
     recipientName: "",
     birthDate: "",
     targetAge: "",
+    general: "",
   });
   const [loading, setLoading] = useState(false);
 
@@ -126,7 +127,10 @@ export default function BirthdayForm() {
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("An error occurred. Please try again.");
+      setErrors((prev) => ({
+        ...prev,
+        general: "Form gönderilirken bir hata oluştu",
+      }));
     } finally {
       setLoading(false);
     }
