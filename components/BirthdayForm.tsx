@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 
 export default function BirthdayForm() {
   const router = useRouter();
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(0);
   const [formData, setFormData] = useState({
     senderName: "",
     recipientName: "",
@@ -24,7 +24,9 @@ export default function BirthdayForm() {
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    inputRef.current?.focus();
+    if (step !== 0) {
+      inputRef.current?.focus();
+    }
   }, [step]);
 
   const validateField = (name: string, value: string) => {
@@ -145,10 +147,57 @@ export default function BirthdayForm() {
     }
   };
 
-  return (
-    <div className="max-w-md mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-      <form onSubmit={handleSubmit} className="space-y-6">
-        {step === 1 && (
+  const renderStep = () => {
+    switch (step) {
+      case 0:
+        return (
+          <div className="max-w-2xl mx-auto text-center space-y-8">
+            <div className="space-y-4">
+              <h2 className="text-3xl font-bold text-gray-800 dark:text-white">
+                Welcome to Birthday Countdown! 🎉
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-300">
+                Create beautiful countdown timers for your loved ones&apos;
+                birthdays. Make their special day even more exciting with
+                personalized countdowns!
+              </p>
+            </div>
+
+            <div className="space-y-4 bg-white/50 dark:bg-gray-800/50 p-6 rounded-lg">
+              <h3 className="text-xl font-semibold text-gray-700 dark:text-gray-200">
+                Features:
+              </h3>
+              <ul className="text-left space-y-2 text-gray-600 dark:text-gray-300">
+                <li>✨ Create personalized birthday countdowns</li>
+                <li>🎈 Share with friends and family</li>
+                <li>🎂 Automatic celebration messages</li>
+              </ul>
+            </div>
+
+            <div className="pt-4">
+              <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                Created with ❤️ by{" "}
+                <a
+                  href="https://linknots.com/kuralayusha"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-purple-600 dark:text-purple-400 hover:underline"
+                >
+                  Kuralayusha
+                </a>
+              </p>
+              <button
+                onClick={() => setStep(1)}
+                className="px-8 py-4 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors text-lg font-semibold"
+              >
+                Let&apos;s Start! 🚀
+              </button>
+            </div>
+          </div>
+        );
+
+      case 1:
+        return (
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">
@@ -179,9 +228,10 @@ export default function BirthdayForm() {
               Next
             </button>
           </div>
-        )}
+        );
 
-        {step === 2 && (
+      case 2:
+        return (
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">
@@ -223,9 +273,10 @@ export default function BirthdayForm() {
               </button>
             </div>
           </div>
-        )}
+        );
 
-        {step === 3 && (
+      case 3:
+        return (
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">
@@ -266,9 +317,10 @@ export default function BirthdayForm() {
               </button>
             </div>
           </div>
-        )}
+        );
 
-        {step === 4 && (
+      case 4:
+        return (
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">
@@ -311,7 +363,17 @@ export default function BirthdayForm() {
               </button>
             </div>
           </div>
-        )}
+        );
+
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <div className="w-full max-w-md mx-auto">
+      <form onSubmit={handleSubmit} className="space-y-6">
+        {renderStep()}
       </form>
     </div>
   );
