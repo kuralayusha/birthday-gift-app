@@ -36,8 +36,8 @@ npm install
 3. Create a `.env.local` file in the root directory with your Supabase credentials:
 
 ```js
-NEXT_PUBLIC_SUPABASE_URL = your_supabase_project_url;
-NEXT_PUBLIC_SUPABASE_ANON_KEY = your_NEXT_PUBLIC_SUPABASE_ANON_KEY;
+SUPABASE_URL = your_supabase_project_url;
+SUPABASE_ANON_KEY = your_SUPABASE_ANON_KEY;
 ```
 
 4. Set up the database schema:
