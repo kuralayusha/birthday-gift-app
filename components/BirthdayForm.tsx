@@ -295,23 +295,42 @@ export default function BirthdayForm() {
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">
                 Birthday Date
               </label>
-              <input
-                ref={inputRef}
-                type="date"
-                name="birthDate"
-                required
-                min={new Date().toISOString().split("T")[0]}
-                value={formData.birthDate}
-                onChange={handleInputChange}
-                onKeyDown={handleKeyDown}
-                pattern="\d{4}-\d{2}-\d{2}"
-                className="mt-1 block w-full rounded-md border-2 border-gray-300 dark:border-gray-600 
-                px-4 py-2 bg-white dark:bg-gray-800 
-                focus:outline-none focus:border-purple-500 dark:focus:border-purple-400 
-                transition-colors [&::-webkit-calendar-picker-indicator]:dark:invert
-                [&::-webkit-datetime-edit]:p-0
-                [&::-webkit-datetime-edit-fields-wrapper]:p-0"
-              />
+              <div className="relative">
+                <input
+                  ref={inputRef}
+                  type="date"
+                  name="birthDate"
+                  required
+                  min={new Date().toISOString().split("T")[0]}
+                  value={formData.birthDate}
+                  onChange={handleInputChange}
+                  onKeyDown={handleKeyDown}
+                  className="mt-1 block w-full rounded-md border-2 border-gray-300 dark:border-gray-600 
+                  px-4 py-2 bg-white dark:bg-gray-800 
+                  focus:outline-none focus:border-purple-500 dark:focus:border-purple-400 
+                  transition-colors appearance-none"
+                  style={{
+                    colorScheme: "light",
+                    WebkitAppearance: "none",
+                    MozAppearance: "none",
+                  }}
+                />
+                <div className="absolute inset-y-0 right-0 flex items-center pr-2 mt-1 pointer-events-none">
+                  <svg
+                    className="h-5 w-5 text-gray-400 dark:text-gray-500"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    />
+                  </svg>
+                </div>
+              </div>
               <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
                 Select the future date when you want to celebrate
               </p>
