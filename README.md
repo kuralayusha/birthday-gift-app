@@ -7,7 +7,6 @@ A modern web application that creates personalized birthday countdown timers. Bu
 - Multi-step form for creating birthday countdowns
 - Real-time countdown display
 - Responsive design for all devices
-- Dark mode support
 - Automatic celebration message when countdown reaches zero
 
 ## Tech Stack
